@@ -1,0 +1,190 @@
+<!doctype html>
+<!--
+  靚民宿 網站提案示範
+  © 2026 Ninth 九號. All rights reserved.
+  本網站之設計、插畫與程式碼為 Ninth 九號之著作，僅供提案展示，未經書面授權不得重製、改作、公開傳輸或使用。
+-->
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="author" content="Ninth 九號">
+<meta name="copyright" content="© 2026 Ninth 九號. All rights reserved.">
+<title>靚民宿｜花蓮吉安民宿（網站提案示範）</title>
+<meta name="description" content="Ninth 九號為靚民宿製作的網站提案示範，非民宿官方網站。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="index.html">
+<header id="site-head"></header>
+
+<main>
+  <section class="room-hero" aria-labelledby="hero-title">
+    <div class="ceiling" aria-hidden="true">
+      <svg viewBox="0 0 1440 88" preserveAspectRatio="none">
+        <defs><filter id="glow" x="-5%" y="-200%" width="110%" height="500%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+        <path d="M0 0 H1440 V40 C1100 96 700 10 360 44 C220 58 100 70 0 62 Z" fill="#FFFFFF"/>
+        <path class="light" d="M0 64 C100 72 220 60 360 46 C700 12 1100 98 1440 42" stroke="#FFD88A" stroke-width="10" fill="none" opacity=".32" filter="url(#glow)"/>
+        <path class="light" d="M0 62 C100 70 220 58 360 44 C700 10 1100 96 1440 40" stroke="#FFE7B4" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+    <div class="wrap hero-body">
+      <div class="hero-wall">
+        <div class="hexwall" id="hexwall" aria-hidden="true"></div>
+        <div class="headboard">
+          <span class="big-char" aria-hidden="true">靚</span>
+          <h1 id="hero-title">在花蓮吉安的田中間，<br>四間採光很好的房間。</h1>
+          <p class="sub">每間房都有自己的小陽台，窗外是稻田和中央山脈。離市區、東大門夜市開車 5 到 10 分鐘，每一間房都有專屬車位。</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="booking.html">查空房、訂房</a>
+            <a class="btn btn-outline" href="rooms.html">看房間</a>
+          </div>
+        </div>
+      </div>
+      <div class="window" aria-hidden="true">
+        <div class="pane window-view" id="pane-l"></div>
+        <div class="pane window-view" id="pane-r"></div>
+        <span class="caption">VIEW FROM ROOM</span>
+      </div>
+    </div>
+    <div class="floor" aria-hidden="true"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="rooms-title">
+    <div class="wrap">
+      <h2 class="h2" id="rooms-title">兩種房型，<b>四間房</b></h2>
+      <p class="lead">白牆、原木、六角磚，床組用的是頂級寢具。每一間都有自己的陽台，打開窗就是田。</p>
+      <div class="twin" id="twin"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-dark" aria-labelledby="park-title">
+    <div class="wrap park">
+      <div class="park-map" id="park-map"></div>
+      <div>
+        <p class="big geo">4<small>間房</small></p>
+        <p class="eq geo" aria-hidden="true">=</p>
+        <p class="big geo">4<small>個車位</small></p>
+        <h2 class="h2" id="park-title" style="margin-top:28px">每一間房，都有自己的車位</h2>
+        <p class="lead">開車來花蓮玩，回到民宿不用繞圈找位子，也不用擔心被別人停走。車就停在房間樓下。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-wall" aria-labelledby="near-title">
+    <div class="wrap">
+      <h2 class="h2" id="near-title">田園的安靜，<b>市區的方便</b></h2>
+      <p class="lead">民宿在台 9 線旁邊，要往花東縱谷或東海岸都順路。</p>
+      <div class="rings">
+        <div id="rings"></div>
+        <ul class="dist">
+          <li><b class="geo">1.4<small>km</small></b><span>吉安車站<em>搭火車來很方便</em></span></li>
+          <li><b class="geo">1.6<small>km</small></b><span>知卡宣森林公園</span></li>
+          <li><b class="geo">5–10<small>分</small></b><span>花蓮市區、東大門夜市、太平洋公園<em>開車時間</em></span></li>
+          <li><b class="geo">4<small>km</small></b><span>南濱公園</span></li>
+          <li><b class="geo">7<small>km</small></b><span>花蓮機場</span></li>
+        </ul>
+      </div>
+      <p style="margin-top:36px"><a class="btn btn-outline btn-small" href="around.html">看地圖與交通方式</a></p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="score-title">
+    <div class="wrap score">
+      <p class="num geo">9.8</p>
+      <div>
+        <h2 class="h2" id="score-title" style="font-size:28px">住過的人怎麼說</h2>
+        <p class="muted">在 Booking.com 上，住過的旅客給靚民宿 9.8 分，清潔、舒適、性價比都是滿分。</p>
+        <small>資料來源：Booking.com，15 則評論，2026 年 9 月 30 日查詢。分數會變動，以 Booking.com 最新顯示為準。</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-wall" aria-labelledby="notice-title">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+        <h2 class="h2" id="notice-title">公告</h2>
+        <a class="btn btn-outline btn-small" href="notices.html">全部公告</a>
+      </div>
+      <div class="board" id="board"></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="cta-title">
+    <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center">
+      <div>
+        <h2 class="h2" id="cta-title">直接跟我們訂房</h2>
+        <p class="lead">在這裡送出訂房申請，或加 LINE 問空房。訂好後我們會用 LINE 傳匯款資訊給你。</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a class="btn btn-dark" href="booking.html">訂房</a>
+        <a class="btn btn-line" id="cta-line" target="_blank" rel="noopener">加 LINE</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-foot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/guard.js"></script>
+<script>
+(function () {
+  var data = JG.Store.load();
+  document.getElementById("hexwall").innerHTML = ART.hexWall(1400, 760, 7);
+  document.getElementById("pane-l").innerHTML = ART.view(0, 500);
+  document.getElementById("pane-r").innerHTML = ART.view(510, 500);
+  var cl = document.getElementById("cta-line"); cl.href = SHOP.line; cl.insertAdjacentHTML("afterbegin", LINE_ICON);
+
+  document.getElementById("twin").innerHTML = data.rooms.map(function (r) {
+    return '<a class="room-win" href="rooms.html#' + encodeURIComponent(r.id) + '">' +
+      '<div class="frame">' + roomVisual(r) + "</div>" +
+      '<div class="meta"><h3>' + JG.esc(r.name) + '</h3><span class="count">共 ' + r.count + " 間</span></div>" +
+      '<p class="facts"><span>' + r.guests + " 人</span><span>" + JG.esc(r.bed) + "</span><span>專屬車位</span></p>" +
+      '<p class="price"><span>平日<b>' + JG.money(r.weekday) + "</b></span><span>假日<b>" + JG.money(r.weekend) + "</b></span></p></a>";
+  }).join("");
+
+  // 4 間房 = 4 個車位（俯視圖）
+  var total = data.rooms.reduce(function (n, r) { return n + r.count; }, 0);
+  var colors = ["#D9C3A0", "#B9BCBE", "#D9C3A0", "#B9BCBE", "#D9C3A0", "#B9BCBE"];
+  var w = 120, gap = 14, width = total * w + (total - 1) * gap, sx = (560 - width) / 2, s = '<svg viewBox="0 0 560 420" role="img" aria-label="民宿俯視圖：' + total + ' 間房，前面各有一個車位">';
+  s += '<rect x="' + (sx - 20) + '" y="30" width="' + (width + 40) + '" height="170" fill="#F5F5F2"/>';
+  var k = 0;
+  data.rooms.forEach(function (r) {
+    for (var i = 0; i < r.count; i++, k++) {
+      var x = sx + k * (w + gap);
+      s += '<rect x="' + x + '" y="50" width="' + w + '" height="130" fill="' + colors[k % colors.length] + '" opacity=".9"/>' +
+           '<text x="' + (x + w / 2) + '" y="112" text-anchor="middle" font-size="15" fill="#2B2D30" font-family="Noto Sans TC, sans-serif">' + JG.esc(r.name.replace(/（.*）/, "")) + '</text>' +
+           '<text x="' + (x + w / 2) + '" y="140" text-anchor="middle" font-size="22" fill="#2B2D30" font-family="Jost, sans-serif">' + (k + 1) + '</text>' +
+           '<rect x="' + (x + 6) + '" y="236" width="' + (w - 12) + '" height="150" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="10 8"/>' +
+           '<g transform="translate(' + (x + w / 2 - 26) + ' 262)"><rect width="52" height="96" rx="14" fill="#FFE3A1"/><rect x="8" y="16" width="36" height="20" rx="4" fill="#3D3F42" opacity=".35"/><rect x="8" y="62" width="36" height="16" rx="4" fill="#3D3F42" opacity=".35"/></g>' +
+           '<line x1="' + (x + w / 2) + '" y1="182" x2="' + (x + w / 2) + '" y2="232" stroke="#FFE3A1" stroke-width="2" stroke-dasharray="3 5"/>';
+    }
+  });
+  s += '<text x="280" y="412" text-anchor="middle" font-size="13" fill="#B7B9BC" font-family="Noto Sans TC, sans-serif">示意圖，實際車位配置以現場為準</text></svg>';
+  document.getElementById("park-map").innerHTML = s;
+
+  // 距離圈
+  var R = '<svg viewBox="0 0 440 440" role="img" aria-label="以民宿為中心的距離示意圖">';
+  [[200, "10 km"], [140, "5 km"], [70, "2 km"]].forEach(function (c) {
+    R += '<circle cx="220" cy="220" r="' + c[0] + '" fill="none" stroke="#C9CBCB" stroke-dasharray="4 6"/><text x="' + (220 + c[0] * .7 + 6) + '" y="' + (220 - c[0] * .7) + '" font-size="12" fill="#6C7075" font-family="Jost, sans-serif">' + c[1] + "</text>";
+  });
+  [["吉安車站", 1.4, -60], ["知卡宣", 1.6, 200], ["南濱公園", 4, 30], ["市區", 4.5, 70], ["花蓮機場", 7, 120], ["七星潭", 10, 95]].forEach(function (p) {
+    var km = p[1], rr = km <= 2 ? km / 2 * 70 : km <= 5 ? 70 + (km - 2) / 3 * 70 : 140 + (km - 5) / 5 * 60, a = p[2] * Math.PI / 180;
+    var x = 220 + rr * Math.cos(a), y = 220 - rr * Math.sin(a);
+    R += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="6" fill="#6E9B5A"/><text x="' + (x + 10).toFixed(1) + '" y="' + (y + 5).toFixed(1) + '" font-size="14" fill="#2B2D30" font-family="Noto Sans TC, sans-serif">' + p[0] + "</text>";
+  });
+  R += '<g transform="translate(206 204)">' + ART.logo.replace('viewBox="0 0 40 44"', 'viewBox="0 0 40 44" width="28" height="31"') + "</g>";
+  R += '<text x="220" y="436" text-anchor="middle" font-size="12" fill="#6C7075" font-family="Noto Sans TC, sans-serif">方向為示意，距離依 Booking.com 與地圖資料</text></svg>';
+  document.getElementById("rings").innerHTML = R;
+
+  document.getElementById("board").innerHTML = JG.sortedNotices(data).slice(0, 3).map(function (n, i) {
+    return "<details" + (i === 0 ? " open" : "") + '><summary><time datetime="' + n.date + '">' + n.date.replace(/-/g, ".") + '</time><span class="t">' + (n.pinned ? '<span class="pin">置頂</span>' : "") + JG.esc(n.title) + '</span><span class="plus" aria-hidden="true"></span></summary><div class="body">' + JG.paras(n.body) + "</div></details>";
+  }).join("") || '<p class="muted" style="padding:20px 0">目前沒有公告。</p>';
+})();
+</script>
+</body>
+</html>

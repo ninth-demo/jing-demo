@@ -1,0 +1,185 @@
+<!doctype html>
+<!--
+  靚民宿 網站提案示範
+  © 2026 Ninth 九號. All rights reserved.
+  本網站之設計、插畫與程式碼為 Ninth 九號之著作，僅供提案展示，未經書面授權不得重製、改作、公開傳輸或使用。
+-->
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="author" content="Ninth 九號">
+<meta name="copyright" content="© 2026 Ninth 九號. All rights reserved.">
+<title>訂房｜靚民宿（網站提案示範）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="booking.html">
+<header id="site-head"></header>
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <div><p class="no geo">BOOKING</p><h1>訂房</h1><p>三個步驟送出訂房申請。民宿確認後，會用 LINE 傳匯款資訊給你。</p></div>
+      <div class="mini-window" aria-hidden="true"><span></span><span></span></div>
+    </div>
+  </div>
+  <section class="sec" style="padding-top:56px">
+    <div class="wrap">
+      <ol class="steps-bar" id="bar">
+        <li class="on"><span class="n">1</span>日期</li>
+        <li><span class="n">2</span>房間</li>
+        <li><span class="n">3</span>你的資料</li>
+      </ol>
+      <div class="book-grid">
+        <form class="panel" id="wiz" novalidate>
+          <div class="step on" data-step="1">
+            <h2>什麼時候來？</h2>
+            <div class="form">
+              <div class="row2">
+                <div class="field"><label for="ci">入住日期</label><input type="date" id="ci" required></div>
+                <div class="field"><label id="n-label">住幾晚</label>
+                  <div class="nights" role="group" aria-labelledby="n-label"><button type="button" id="n-minus" aria-label="少住一晚">−</button><output id="n-out">1 晚</output><button type="button" id="n-plus" aria-label="多住一晚">＋</button></div>
+                </div>
+              </div>
+              <div class="field"><label for="guests">幾位大人？</label>
+                <select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+                <p class="hint">11 歲（含）以上的孩童請算成大人。民宿無法加床。</p>
+              </div>
+            </div>
+            <p class="err" id="e1" role="alert"></p>
+            <div class="step-nav"><span></span><button class="btn btn-dark" type="button" data-go="2">下一步：選房間</button></div>
+          </div>
+
+          <div class="step" data-step="2">
+            <h2>選一間房</h2>
+            <div class="pick" id="pick"></div>
+            <p class="err" id="e2" role="alert"></p>
+            <div class="step-nav"><button class="btn btn-outline" type="button" data-go="1">上一步</button><button class="btn btn-dark" type="button" data-go="3">下一步：填資料</button></div>
+          </div>
+
+          <div class="step" data-step="3">
+            <h2>你的資料</h2>
+            <div class="form">
+              <div class="row2">
+                <div class="field"><label for="name">訂房人姓名</label><input id="name" autocomplete="name" placeholder="例如：陳小姐"></div>
+                <div class="field"><label for="phone">手機號碼</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0912345678"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label for="email">電子郵件（選填）</label><input id="email" type="email" autocomplete="email"></div>
+                <div class="field"><label for="arrive">大概幾點到</label><select id="arrive"><option>15:00～16:00</option><option>16:00～17:00</option><option>17:00～18:00</option><option>18:00～19:00</option><option>19:00 以後（會先聯絡）</option></select></div>
+              </div>
+              <div class="field"><label for="memo">想告訴民宿的事（選填）</label><textarea id="memo" rows="3" placeholder="例如：會騎腳踏車來"></textarea></div>
+              <label class="agree"><input type="checkbox" id="agree"><span>我已閱讀並同意 <a href="stay.html#cancel" target="_blank">住宿須知與取消規定</a>，了解入住時只收現金，也同意 <a href="stay.html#privacy" target="_blank">個人資料的蒐集與使用方式</a>。</span></label>
+            </div>
+            <p class="err" id="e3" role="alert"></p>
+            <div class="step-nav"><button class="btn btn-outline" type="button" data-go="2">上一步</button><button class="btn btn-green" type="submit">送出訂房申請</button></div>
+            <p class="hint" style="margin-top:14px">這是提案示範網站，不會真的訂房，也不會把資料傳到任何地方。</p>
+          </div>
+
+          <div class="step" data-step="4">
+            <div class="done-box">
+              <div class="check"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+              <h2>訂房申請已送出</h2>
+              <p class="muted" id="done-text" style="margin-top:12px"></p>
+              <p style="margin-top:24px"><a class="btn btn-line" id="done-line" target="_blank" rel="noopener">加 LINE，拿匯款資訊</a></p>
+              <p class="hint" style="margin-top:14px">（示範版：這筆訂房可以在 <a href="admin/index.html#bookings">民宿後台</a> 看到）</p>
+            </div>
+          </div>
+        </form>
+
+        <aside class="summary" id="summary" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+</main>
+<footer id="site-foot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/guard.js"></script>
+<script>
+(function () {
+  var data = JG.Store.load(), today = JG.taipeiNow().date;
+  var S = { step: 1, checkin: "", nights: 1, guests: 2, room: new URLSearchParams(location.search).get("room") || "" };
+  var $ = function (id) { return document.getElementById(id); };
+  $("ci").min = JG.addDays(today, 1); $("ci").max = JG.addDays(today, 180);
+  $("done-line").href = SHOP.line; $("done-line").insertAdjacentHTML("afterbegin", LINE_ICON);
+
+  function checkout() { return S.checkin ? JG.addDays(S.checkin, S.nights) : ""; }
+  function roomOf(id) { return data.rooms.filter(function (r) { return r.id === id; })[0]; }
+  function avail(r) { return JG.nightsBetween(S.checkin, checkout()).reduce(function (m, d) { return Math.min(m, JG.left(data, r, d)); }, r.count); }
+
+  function renderSummary() {
+    var r = roomOf(S.room), html = "<h3>你的訂房</h3>";
+    html += '<div class="row"><span>入住</span><span>' + (S.checkin ? JG.fmt(S.checkin) : "—") + "</span></div>";
+    html += '<div class="row"><span>退房</span><span>' + (S.checkin ? JG.fmt(checkout()) : "—") + "</span></div>";
+    html += '<div class="row"><span>人數</span><span>' + S.guests + " 位</span></div>";
+    html += '<div class="row"><span>房間</span><span>' + (r && S.step >= 2 ? JG.esc(r.name) : "—") + "</span></div>";
+    if (r && S.checkin && S.step >= 2) {
+      var q = JG.quote(data, r, S.checkin, checkout());
+      html += q.nights.map(function (d) { return '<div class="row muted"><span>' + JG.fmt(d) + (JG.isWeekendNight(d) ? " 假日" : " 平日") + "</span><span>" + JG.money(JG.isWeekendNight(d) ? r.weekend : r.weekday) + "</span></div>"; }).join("");
+      html += '<div class="row total"><span>' + q.nights.length + " 晚合計</span><b>" + JG.money(q.total) + "</b></div>";
+      html += '<div class="row"><span>定金（' + q.rate + "%）</span><span>" + JG.money(q.deposit) + "</span></div>";
+    }
+    html += '<p class="pay">訂房確認後用 LINE 傳匯款資訊，收到定金才算完成。<b>入住時只收現金。</b></p>';
+    $("summary").innerHTML = html;
+  }
+  function renderPick() {
+    $("pick").innerHTML = data.rooms.map(function (r) {
+      var a = avail(r), tooMany = S.guests > r.guests, off = a < 1 || tooMany, q = JG.quote(data, r, S.checkin, checkout());
+      return '<label class="' + (off ? "full" : "") + '"><input type="radio" name="room" value="' + r.id + '"' + (off ? " disabled" : "") + (S.room === r.id && !off ? " checked" : "") + '>' +
+        '<span><span class="nm">' + JG.esc(r.name) + '</span><span class="sub">' + r.guests + " 人・" + JG.esc(r.bed) + "・" + (tooMany ? "人數超過這間房" : a < 1 ? "這幾晚客滿" : "這幾晚還有 " + a + " 間") + "</span></span>" +
+        '<span class="pr">' + JG.money(q.total) + "<small>" + q.nights.length + " 晚合計</small></span></label>";
+    }).join("");
+    if (S.room) { var r = roomOf(S.room); if (!r || avail(r) < 1 || S.guests > r.guests) S.room = ""; }
+  }
+  function go(n) {
+    if (n > S.step) {
+      if (S.step === 1) {
+        if (!S.checkin) { $("e1").textContent = "請選入住日期。"; return; }
+        if (S.checkin < $("ci").min) { $("e1").textContent = "最早可以訂明天入住。"; return; }
+        $("e1").textContent = ""; renderPick();
+      }
+      if (S.step === 2 && n === 3 && !S.room) { $("e2").textContent = "請選一間房。"; return; }
+      $("e2").textContent = "";
+    }
+    S.step = n;
+    document.querySelectorAll(".step").forEach(function (el) { el.classList.toggle("on", +el.dataset.step === n); });
+    document.querySelectorAll("#bar li").forEach(function (li, i) { li.classList.toggle("on", i + 1 === n); li.classList.toggle("done", i + 1 < n); });
+    renderSummary();
+    $("bar").scrollIntoView({ block: "nearest" });
+  }
+  document.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { go(+b.dataset.go); }); });
+  $("ci").addEventListener("change", function () { S.checkin = $("ci").value; renderSummary(); });
+  $("guests").addEventListener("change", function () { S.guests = +$("guests").value; renderSummary(); });
+  function setN(n) { S.nights = Math.max(1, Math.min(7, n)); $("n-out").textContent = S.nights + " 晚"; renderSummary(); }
+  $("n-minus").addEventListener("click", function () { setN(S.nights - 1); });
+  $("n-plus").addEventListener("click", function () { setN(S.nights + 1); });
+  $("pick").addEventListener("change", function (e) { if (e.target.name === "room") { S.room = e.target.value; $("e2").textContent = ""; renderSummary(); } });
+
+  $("wiz").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = $("e3"), phone = $("phone").value.replace(/\D/g, "");
+    if (!$("name").value.trim()) { err.textContent = "請填寫訂房人姓名。"; return; }
+    if (!/^09\d{8}$/.test(phone)) { err.textContent = "手機號碼格式不對，請輸入 09 開頭的 10 位數字。"; return; }
+    if ($("email").value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("email").value)) { err.textContent = "電子郵件格式不對，或是留空也可以。"; return; }
+    if (!$("agree").checked) { err.textContent = "請先勾選同意住宿須知與個資說明。"; return; }
+    var r = roomOf(S.room), fresh = JG.Store.load();
+    if (JG.quote(fresh, r, S.checkin, checkout()).short.length) { err.textContent = "這幾晚剛好被訂走了，請回上一步換房間或日期。"; return; }
+    err.textContent = "";
+    var q = JG.quote(fresh, r, S.checkin, checkout()), ts = JG.taipeiNow();
+    fresh.bookings.push({ id: "b" + Date.now(), created: ts.date + " " + ts.time, room: r.id, roomName: r.name,
+      checkin: S.checkin, checkout: checkout(), nights: q.nights.length, guests: S.guests, total: q.total, deposit: q.deposit,
+      name: $("name").value.trim(), phone: phone, email: $("email").value.trim(), arrive: $("arrive").value, memo: $("memo").value.trim(), status: "待確認" });
+    JG.Store.save(fresh); data = fresh;
+    $("done-text").textContent = r.name + "，" + JG.fmt(S.checkin) + " 入住，共 " + q.nights.length + " 晚，合計 " + JG.money(q.total) + "。請加 LINE（ID：" + SHOP.lineId + "）告訴我們你的名字，我們會傳匯款資訊給你。";
+    go(4);
+    document.querySelectorAll("#bar li").forEach(function (li) { li.classList.remove("on"); li.classList.add("done"); });
+  });
+  renderSummary();
+})();
+</script>
+</body>
+</html>
