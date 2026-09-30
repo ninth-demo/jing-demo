@@ -1,0 +1,178 @@
+<!doctype html>
+<!--
+  靚民宿 網站提案示範：民宿後台
+  © 2026 Ninth 九號. All rights reserved. 未經書面授權不得重製、改作或使用。
+-->
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="author" content="Ninth 九號">
+<meta name="copyright" content="© 2026 Ninth 九號. All rights reserved.">
+<title>靚民宿 後台（示範）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+body{background:var(--wall)}
+.login{min-height:calc(100vh - 36px);display:grid;place-items:center;padding:24px}
+.login .panel{width:min(420px,100%)}
+.login h1{font-weight:300;font-size:28px;letter-spacing:.2em;margin:14px 0 6px}
+.cred{background:var(--wall);border-left:3px solid var(--oak-deep);padding:10px 14px;font-size:14px;margin:14px 0 18px}
+.app{display:none}
+.app.on{display:block}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:70px;flex-wrap:wrap}
+.top .tabs{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--line);justify-content:flex-start;min-height:0}
+.tabs a{text-decoration:none;padding:14px 20px;color:var(--muted);font-size:15px;border-bottom:2px solid transparent;display:flex;gap:8px;align-items:center}
+.tabs a.on{color:var(--ink);border-bottom-color:var(--charcoal);font-weight:500}
+.tabs .badge{background:var(--field);color:#fff;font-size:12px;padding:0 8px;font-family:var(--geo)}
+.top-acts{display:flex;gap:10px;align-items:center}
+.top-acts a,.top-acts button{font-size:14px}
+.body{padding:36px 0 90px}
+.pane{display:none}.pane.on{display:block}
+.pane > .wrap > h2,.pane h2.t{font-weight:300;font-size:26px;letter-spacing:.16em;margin-bottom:6px}
+.help{font-size:14px;color:var(--muted);margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.bk{background:#fff;border:1px solid var(--line);padding:20px 22px;display:grid;gap:8px}
+.bk .hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.bk .when{font-family:var(--geo);font-size:20px}
+.bk .st{font-size:12px;padding:2px 10px;background:var(--wall);white-space:nowrap}
+.bk .st.s-待確認{background:#FFF1CC}.bk .st.s-已確認{background:#E3EFDC}.bk .st.s-已取消{background:#EEE;color:#888}
+.bk .ln{font-size:14px;color:var(--muted)}
+.bk .ln b{color:var(--ink);font-weight:500}
+.bk .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.bk select{border:1px solid var(--line);padding:6px 8px;background:#fff}
+.link-btn{background:none;border:0;color:var(--danger);cursor:pointer;font-size:14px;padding:4px}
+.link-btn.edit{color:var(--ink);text-decoration:underline}
+.empty{background:#fff;border:1px dashed #CFCFCB;padding:36px;text-align:center;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .dow{font-size:12px;color:var(--muted);padding:4px 0}
+.cal .d{border:1px solid var(--line);background:#fff;padding:8px 0 6px;min-height:58px;cursor:pointer;line-height:1.25;font-size:15px}
+.cal .d small{display:block;font-size:11px;color:var(--field);margin-top:3px}
+.cal .d.some{background:#FFF6DE}.cal .d.some small{color:#9A7420}
+.cal .d.full{background:#F4E1DC}.cal .d.full small{color:var(--danger)}
+.cal .d:disabled{opacity:.35;cursor:default}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px}
+.cal-head b{font-weight:400;font-size:18px;letter-spacing:.14em}
+.cal-nav button{width:40px;height:40px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.cal-nav button:disabled{opacity:.35}
+.room-edit{display:grid;grid-template-columns:280px 1fr;gap:26px;background:#fff;border:1px solid var(--line);padding:24px;margin-bottom:20px}
+.room-edit .frame{border:8px solid var(--frame);background:var(--frame);aspect-ratio:4/3;overflow:hidden;position:relative}
+.room-edit .frame img,.room-edit .frame svg{width:100%;height:100%;object-fit:cover}
+.room-edit .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.upload{display:inline-flex;margin-top:12px;font-weight:500;font-size:14px;cursor:pointer;text-decoration:underline}
+.upload input{position:absolute;width:1px;height:1px;opacity:0}
+.adm-list{background:#fff;border:1px solid var(--line)}
+.adm-list .it{display:grid;grid-template-columns:110px 1fr auto;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:center}
+.adm-list .it:last-child{border-bottom:0}
+.adm-list time{font-family:var(--geo);color:var(--muted)}
+.saved{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--charcoal);color:#fff;padding:12px 24px;opacity:0;transition:.25s;z-index:100;pointer-events:none;font-size:15px}
+.saved.show{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){.two,.room-edit{grid-template-columns:1fr}.room-edit .grid4{grid-template-columns:1fr 1fr}.tabs a{padding:12px 12px}}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">這是 <strong>示範版後台</strong>：修改只會存在這台裝置的瀏覽器。正式版會連到雲端資料庫，改完所有旅客立刻看到。</div>
+
+<div class="login" id="login">
+  <div class="panel">
+    <div id="login-logo" style="width:44px"></div>
+    <h1>靚民宿 後台</h1>
+    <p class="muted">處理訂房、調整房況和房價、發公告。</p>
+    <p class="cred">示範帳號：<b>demo</b>　密碼：<b>1234</b></p>
+    <form class="form" id="login-form">
+      <div class="field"><label for="u">帳號</label><input id="u" autocomplete="username"></div>
+      <div class="field"><label for="pw">密碼</label><input id="pw" type="password" autocomplete="current-password"></div>
+      <p class="err" id="login-err"></p>
+      <button class="btn btn-dark" type="submit">登入</button>
+    </form>
+  </div>
+</div>
+
+<div class="app" id="app">
+  <div class="top">
+    <div class="wrap">
+      <a class="logo" href="#bookings"><span id="top-logo"></span><span><b>靚民宿</b><small>ADMIN</small></span></a>
+      <div class="top-acts"><a class="btn btn-outline btn-small" href="../index.html" target="_blank" rel="noopener">看網站</a><button class="btn btn-outline btn-small" type="button" id="reset">還原示範資料</button><button class="link-btn edit" type="button" id="logout">登出</button></div>
+    </div>
+    <div class="wrap tabs" role="tablist">
+      <a href="#bookings" data-p="bookings">訂房 <span class="badge" id="badge"></span></a>
+      <a href="#avail" data-p="avail">房況</a>
+      <a href="#rooms" data-p="rooms">房型與房價</a>
+      <a href="#notices" data-p="notices">公告</a>
+      <a href="#info" data-p="info">民宿資訊</a>
+    </div>
+  </div>
+
+  <div class="body">
+    <section class="pane" id="p-bookings"><div class="wrap">
+      <h2>訂房</h2>
+      <p class="help">旅客從網站送出的訂房會出現在這裡。收到定金後改成「已確認」，那幾晚會自動扣掉一間；改成「已取消」會自動放回來。</p>
+      <div class="cards" id="bk-list"></div>
+    </div></section>
+
+    <section class="pane" id="p-avail"><div class="wrap">
+      <h2>房況</h2>
+      <p class="help">格子裡是那晚還剩幾間。從 Booking.com 或電話訂走的房間，點一下格子就扣一間；扣到客滿再點一次，會恢復成全部空房。</p>
+      <div class="two">
+        <div class="panel">
+          <div class="field"><label for="av-room">房型</label><select id="av-room"></select></div>
+          <div class="cal-head"><b id="av-month"></b><div class="cal-nav"><button type="button" id="av-prev" aria-label="上個月">‹</button> <button type="button" id="av-next" aria-label="下個月">›</button></div></div>
+          <div class="cal" id="av-cal"></div>
+        </div>
+        <div>
+          <h2 class="t" style="font-size:20px">這個月已經被訂走的</h2>
+          <div class="adm-list" id="av-list" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="pane" id="p-rooms"><div class="wrap">
+      <h2>房型與房價</h2>
+      <p class="help">改完按每個房型下面的「儲存」。照片會自動壓縮，建議用橫的照片。</p>
+      <div id="room-editor"></div>
+    </div></section>
+
+    <section class="pane" id="p-notices"><div class="wrap">
+      <h2>公告</h2>
+      <p class="help">公告會出現在網站首頁和公告頁。重要的可以置頂。</p>
+      <div class="two">
+        <form class="panel form" id="nt-form">
+          <input type="hidden" id="nt-id">
+          <div class="field"><label for="nt-t">標題</label><input id="nt-t" placeholder="例如：中秋連假還有一間四人房"></div>
+          <div class="field"><label for="nt-d">日期</label><input id="nt-d" type="date"></div>
+          <div class="field"><label for="nt-b">內容</label><textarea id="nt-b" rows="6" placeholder="空一行就會分段"></textarea></div>
+          <label class="agree"><input type="checkbox" id="nt-pin"><span>置頂</span></label>
+          <p class="err" id="nt-err"></p>
+          <div style="display:flex;gap:10px"><button class="btn btn-dark" type="submit" id="nt-submit">發布公告</button><button class="btn btn-outline" type="button" id="nt-cancel" style="display:none">取消編輯</button></div>
+        </form>
+        <div class="adm-list" id="nt-list"></div>
+      </div>
+    </div></section>
+
+    <section class="pane" id="p-info"><div class="wrap">
+      <h2>民宿資訊</h2>
+      <p class="help">這些資料會同步出現在網站的頁尾、住宿須知和訂房頁。</p>
+      <form class="panel form" id="info-form" style="max-width:680px">
+        <div class="field"><label for="i-notice">網站最上方的公告列（留空就不顯示）</label><input id="i-notice" maxlength="60" placeholder="例如：雙十連假已客滿，感謝大家"></div>
+        <div class="row2"><div class="field"><label for="i-cf">入住開始</label><input id="i-cf" type="time"></div><div class="field"><label for="i-ct">入住截止</label><input id="i-ct" type="time"></div></div>
+        <div class="row2"><div class="field"><label for="i-co">退房時間</label><input id="i-co" type="time"></div><div class="field"><label for="i-dr">定金比例（%）</label><input id="i-dr" inputmode="numeric"><p class="hint">依交通部定型化契約，定金不能超過房價的 30%（三天以上連續假日最多 50%）。</p></div></div>
+        <div class="row2"><div class="field"><label for="i-qf">安靜時間從</label><input id="i-qf" type="time"></div><div class="field"><label for="i-qt">到</label><input id="i-qt" type="time"></div></div>
+        <div class="field"><label for="i-lic">民宿登記證</label><input id="i-lic"><p class="hint">依《民宿管理辦法》，網路上的住宿廣告要寫出登記證編號，請不要留空。</p></div>
+        <p class="err" id="i-err"></p>
+        <button class="btn btn-dark" type="submit">儲存</button>
+      </form>
+    </div></section>
+  </div>
+</div>
+
+<div class="saved" id="saved" role="status"></div>
+<script src="../assets/data.js"></script>
+<script src="../assets/admin.js"></script>
+<script src="../assets/guard.js"></script>
+</body>
+</html>
